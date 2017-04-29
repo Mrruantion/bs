@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../web/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../web/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="../web/Css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../web/bootstrap-paginator/src/bootstrap-paginator.js" />
+    <script type="text/javascript" src="../web/Js/jquery.js"></script>
+    <!--<script type="text/javascript" src="../web/Js/jquery.sorted.js"></script>-->
+    <script type="text/javascript" src="../web/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="../web/Js/ckform.js"></script>
+    <script type="text/javascript" src="../web/Js/common.js"></script>
+    <script type="text/javascript" src="../JQ-paginator/jquery.pagination.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="../style/pagination.css" media="screen"> -->
+    <style type="text/css">
+       /* body {
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+*/
+        @media (max-width: 980px) {
+             /*Enable use of floated navbar text */
+            /*.navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }*/
+        }
+        body{
+            width: 100%
+        }
+
+    </style>
+</head>
+<body>
+<div >
+    <div id="list">
+        <div class="form-inline definewidth m20" >  
+        课程名称
+            <input type="text" name="search" id="search" class="abc input-default">&nbsp;&nbsp;  
+            <button type="submit" id="btn" class="btn btn-primary">查询</button>
+        </div>
+        <table class="table table-bordered table-hover definewidth m10">
+            <thead>
+                <tr>
+                    <th>专业名</th>
+                    <th>班级</th>
+                    <th>课程名称</th>
+                    <th>实验室</th>
+                    <th>周期</th>
+                    <th>周/节次</th>
+                    <th>上课时间</th>
+                    <th>任课老师</th>
+                    <th>提交时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="statusList"></tbody>
+        </table>
+        <div class="eg"> 
+            <div class="M-box3" id="M-box3"></div>
+        </div>
+        <div class="inline pull-right page">
+            <div id="pagecount"></div>
+        </div>
+    </div>
+    
+    <div id="edit">
+        <table class="table table-bordered table-hover definewidth m10" >
+            <tr>
+                <td class="tableleft">专业名</td>
+                <td><input type="text" name="profession"  id="profession"/></td>
+            </tr>  
+             <tr>
+                <td width="10%" class="tableleft">班级</td>
+                <td><input type="text" name="class" id="class"/></td>
+            </tr>
+             <tr>
+                <td width="10%" class="tableleft">课程名称</td>
+                <td><input type="text" name="class_name" id="class_name"/></td>
+            </tr>
+            <tr>
+                <td width="10%" class="tableleft">实验室</td>
+                <td><input type="text" name="roomno" id="roomno"/></td>
+            </tr>
+             <tr>
+                <td width="10%" class="tableleft">周期</td>
+                <td><input type="text" name="route" id="route"/></td>
+            </tr> 
+             <tr>
+                <td width="10%" class="tableleft">周/节次</td>
+                <td><input type="text" name="times" id="times"/></td>
+            </tr>
+            <tr>
+                <td width="10%" class="tableleft">上课时间</td>
+                <td><input type="text" name="time" id="time"/></td>
+            </tr>
+            <tr>
+                <td width="10%" class="tableleft">简介</td>
+                <td><textarea cols="40" rows="8" name="intru" id="intru"></textarea></td>
+            </tr>
+            <tr>
+                <td class="tableleft"></td>
+                <td>
+                    <button type="submit" class="btn btn-primary" type="button" id="change">提交</button>
+                    &nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="watch">
+        <table class="table table-bordered table-hover definewidth m10" >
+            <tr>
+                <td class="tableleft">专业名</td>
+                <td><input type="text" name="profession"  id="profession1"/></td>
+            </tr>  
+             <tr>
+                <td width="10%" class="tableleft">班级</td>
+                <td><input type="text" name="class" id="class1"/></td>
+            </tr>
+             <tr>
+                <td width="10%" class="tableleft">课程名称</td>
+                <td><input type="text" name="class_name" id="class_name1"/></td>
+            </tr>
+            <tr>
+                <td width="10%" class="tableleft">实验室</td>
+                <td><input type="text" name="roomno" id="roomno1"/></td>
+            </tr>
+             <tr>
+                <td width="10%" class="tableleft">周期</td>
+                <td><input type="text" name="route" id="route1"/></td>
+            </tr> 
+             <tr>
+                <td width="10%" class="tableleft">周/节次</td>
+                <td><input type="text" name="times" id="times1"/></td>
+            </tr>
+            <tr>
+                <td width="10%" class="tableleft">上课时间</td>
+                <td><input type="text" name="time" id="time1"/></td>
+            </tr>
+            <tr>
+                <td width="10%" class="tableleft">简介</td>
+                <td><textarea cols="40" rows="8" name="intru" id="intru1"></textarea></td>
+            </tr>
+            <tr>
+                <td class="tableleft"></td>
+                <td>
+                    <button type="button" class="btn btn-success" name="backid" id="back">返回列表</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+
+
+var curPage = 1; //当前页码 
+var total,pageSize,totalPage; //总记录数，每页显示数，总页数 
+function getData(page){  
+    $.ajax({ 
+        type: 'get', 
+        url: "/getdata", 
+        data: {pageNum:page-1}, 
+        dataType:'json', 
+        // beforeSend:function(){ 
+        //     $("#list ul").append("<li id='loading'>loading...</li>");//显示加载动画 
+        // }, 
+        success:function(data){ 
+            $("#statusList").empty();//清空数据区 
+            total = data.total; //总记录数 
+            pageSize = data.pageSize; //每页显示条数 
+            curPage = page; //当前页 
+            totalPage = data.totalPage; //总页数 
+            var li = ""; 
+            // var list = json.list; 
+            for(var i=0;i<data.data.length;i++){
+                var it = ['未通过','审核中','已通过']
+                // if(data[i].state)
+                var status = it[data.data[i].status]
+                var trContent = " <tr>" 
+                    + "<td>" + data.data[i].profession +"</td>"
+                    + "<td>" + data.data[i].class +"</td>"
+                    + "<td>" + data.data[i].class_name +"</td>"
+                    + "<td>" + data.data[i].roomno +"</td>"
+                    + "<td>" + data.data[i].route +"</td>"
+                    + "<td>" + data.data[i].times +"</td>"
+                    + "<td>" + data.data[i].time +"</td>"
+                    + "<td>" + data.data[i].teacher_id +"</td>"
+                    + "<td>" + dateToString(date(data.data[i].date)) +"</td>"
+                    + "<td>" +status +"</td>"
+                    + "<td>" 
+                    + "<a class='prune' href = 'javascript:edit("+JSON.stringify(data.data[i])+")'>修改</a>&nbsp<a class='prune' href = 'javascript:dele("+JSON.stringify(data.data[i])+")'>删除</a>&nbsp<a class='prune' href = 'javascript:watch("+JSON.stringify(data.data[i])+")'>查看</a></br>"
+                    +"</td>"
+                    + "</tr>"
+                $("#statusList").append(trContent);
+            } 
+        }, 
+        complete:function(){ //生成分页条 
+            getPageBar();
+            fun(); 
+        }, 
+        error:function(){ 
+            alert("数据加载失败"); 
+        } 
+    }); 
+} 
+//获取分页条 
+function getPageBar(){ 
+    //页码大于最大页数 
+    if(curPage>totalPage) curPage=totalPage; 
+    //页码小于1 
+    console.log(totalPage)
+    if(curPage<1) curPage=1; 
+    pageStr = "<span>共"+total+"条</span><span>"+curPage 
+    +"/"+totalPage+"</span>"; 
+     
+    //如果是第一页 
+    if(curPage==1){ 
+        pageStr += "<span>首页</span><span>上一页</span>"; 
+    }else{ 
+        pageStr += "<span><a href='javascript:void(0)' rel='1'>首页</a></span><span><a href='javascript:void(0)' rel='"+(curPage-1)+"'>上一页</a></span>"; 
+    } 
+    //如果是最后页 
+    if(curPage>=totalPage){ 
+        pageStr += "<span>下一页</span><span>尾页</span>"; 
+    }else{ 
+        pageStr += "<span><a href='javascript:void(0)' rel='"+(parseInt(curPage)+1)+"'> 下一页</a></span><span><a href='javascript:void(0)' rel='"+totalPage+"'>尾页</a></span>"; 
+    } 
+    $("#pagecount").html(pageStr); 
+}
+    
+$(function(){ 
+    getData(1);
+    $('#edit').hide(); //隐藏修改列表
+    $('#watch').hide(); //隐藏查看列表
+});
+function fun(){
+    $("#pagecount span a").on('click',function(){ 
+        var rel = $(this).attr("rel"); 
+        // alert(rel)
+        if(rel&&sear){  //查询
+            search(rel,sear)
+        }else if(rel){
+            getData(rel); 
+        }
+    });  
+}
+
+
+var sear = null;
+// var page = 1
+$('#btn').click(function(){
+    sear = $('#search').val();
+    if(sear){
+        console.log(11)
+        search(1,sear)
+    }else {
+        getData(1)
+    }
+    // console.log(search)
+})
+
+function search(page,data){
+     $.ajax({ 
+        type: 'get', 
+        url: "/search", 
+        data: {pageNum:page-1,search:data}, 
+        dataType:'json', 
+        success:function(data){ 
+            $("#statusList").empty();//清空数据区 
+            total = data.total; //总记录数 
+            pageSize = data.pageSize; //每页显示条数 
+            curPage = page; //当前页 
+            totalPage = data.totalPage; //总页数 
+            var li = ""; 
+            // var list = json.list; 
+            for(var i=0;i<data.data.length;i++){
+                var it = ['未通过','审核中','已通过']
+                // if(data[i].state)
+                var status = it[data.data[i].status]
+                var trContent = " <tr>" 
+                    + "<td>" + data.data[i].profession +"</td>"
+                    + "<td>" + data.data[i].class +"</td>"
+                    + "<td>" + data.data[i].class_name +"</td>"
+                    + "<td>" + data.data[i].roomno +"</td>"
+                    + "<td>" + data.data[i].route +"</td>"
+                    + "<td>" + data.data[i].times +"</td>"
+                    + "<td>" + data.data[i].time +"</td>"
+                    + "<td>" + data.data[i].teacher_id +"</td>"
+                    + "<td>" + dateToString(date(data.data[i].date)) +"</td>"
+                    + "<td>" +status +"</td>"
+                    + "<td>" 
+                    + "<a class='prune' href = 'javascript:edit("+JSON.stringify(data.data[i])+")'>修改</a>&nbsp<a class='prune' href = 'javascript:dele("+JSON.stringify(data.data[i])+")'>删除</a>&nbsp<a class='prune' href = 'javascript:watch("+JSON.stringify(data.data[i])+")'>查看</a></br>"
+                    +"</td>"
+                    + "</tr>"
+                $("#statusList").append(trContent);
+            } 
+        }, 
+        complete:function(){ //生成分页条 
+            getPageBar();
+            fun(); 
+        }, 
+        error:function(){ 
+            alert("数据加载失败"); 
+        } 
+    }); 
+}
+
+$('#backid').click(function(){
+    $('#list').show();
+    $('#edit').hide();
+    $('#watch').hide();
+    sear = $('#search').val();
+    if(sear){
+        console.log(11)
+        search(1,sear)
+    }else {
+        getData(1)
+    }
+})
+
+//修改
+var id = 0
+function edit(data){
+    id = data.id
+    $('#list').hide();
+    $('#edit').show();
+    $('#profession').val(data.profession).removeAttr("disabled");
+    $('#class').val(data.class).removeAttr("disabled");
+    $('#class_name').val(data.class_name).removeAttr("disabled");
+    $('#roomno').val(data.roomno).removeAttr("disabled");
+    $('#route').val(data.route).removeAttr("disabled");
+    $('#times').val(data.times).removeAttr("disabled");
+    $('#time').val(data.time).removeAttr("disabled");
+    $('#intru').val(data.intruc).removeAttr("disabled");
+}
+
+$('#change').click(function(){
+    console.log(11)
+    var option = {
+        profession: $('#profession').val(),
+        classs : $('#class').val(),
+        class_name : $('#class_name').val(),
+        roomno : $('#roomno').val(),
+        route : $('#route').val(),
+        times : $('#times').val(),
+        time : $('#time').val(),
+        intruc : $('#intru').val(),
+        id: id
+    }
+    $.ajax({
+        type:'post',
+        url:'/edit',
+        data:option,
+        dataType:'json',
+        success:function(data){
+            getData(1)
+            $('#list').show();
+            $('#edit').hide();
+        }
+    })
+    console.log(option)
+})
+
+//删除
+function dele(data){
+    console.log(data.id)
+    $.ajax({ 
+        type: 'post', 
+        url: "/delete", 
+        data: {id:data.id}, 
+        dataType:'json', 
+        success:function(data){ 
+            // console.log(data)
+            getData(1)
+        }
+    }); 
+}
+//查看
+function watch(data){
+    $('#list').hide();
+    $('#edit').hide();
+    $('#watch').show();
+    $('#profession1').val(data.profession).attr("disabled","true");
+    $('#class1').val(data.class).attr("disabled","true");
+    $('#class_name1').val(data.class_name).attr("disabled","true");
+    $('#roomno1').val(data.roomno).attr("disabled","true");
+    $('#route1').val(data.route).attr("disabled","true");
+    $('#times1').val(data.times).attr("disabled","true");
+    $('#time1').val(data.time).attr("disabled","true");
+    $('#intru1').val(data.intruc).attr("disabled","true");
+}
+$('#back').click(function(){
+    $('#list').show();
+    $('#edit').hide();
+    $('#watch').hide();
+    sear = $('#search').val();
+    if(sear){
+        console.log(11)
+        search(1,sear)
+    }else {
+        getData(1)
+    }
+})
+//日期格式
+function date(str) {
+    var date = new Date();
+    if (!str)
+        return date;
+    var t = str.split(/[T\s]/);
+    if (t.length < 2)
+        t = (str + ' 00:00:00').split(/[T\s]/);
+    var str_before = t[0]; //获取年月日
+    var str_after = t[1]; //获取时分秒
+    var years = str_before.split('-')[0]; //分别截取得到年月日
+    var months = str_before.split('-')[1] - 1;
+    var days = str_before.split('-')[2];
+    var hours = str_after.split(':')[0] || 0;
+    var mins = str_after.split(':')[1] || 0;
+    var seces = str_after.split(':')[2].replace("Z", "");
+    var secs = seces.split('.')[0] || 0;
+    var smsecs = seces.split('.')[1] || 0;
+    if (str.indexOf("T") == -1) {
+        date.setFullYear(years, months, days);
+        date.setHours(hours, mins, secs, smsecs);
+    } else {
+        date.setUTCFullYear(years, months, days);
+        date.setUTCHours(hours, mins, secs, smsecs);
+    }
+    return date;
+}
+//日期格式
+function dateToString(d) {
+    var j = {};
+    j.m = d.getMonth() + 1;
+    j.d = d.getDate();
+    j.h = d.getHours();
+    j.mi = d.getMinutes();
+    j.s = d.getSeconds();
+    for (items in j) {
+        if (j[items] < 10)
+            j[items] = "0" + j[items];
+    }
+    return d.getFullYear() + "-" + j.m + "-" + j.d + " " + j.h + ":" + j.mi + ":" + j.s;
+}
+</script>
+<!-- var trContent = " <tr>" 
++ "<td>" + data.data[i].profession +"</td>"
++ "<td>" + data.data[i].class +"</td>"
++ "<td>" + data.data[i].class_name +"</td>"
++ "<td>" + data.data[i].roomno +"</td>"
++ "<td>" + data.data[i].route +"</td>"
++ "<td>" + data.data[i].times +"</td>"
++ "<td>" + data.data[i].time +"</td>"
++ "<td>" + data.data[i].teacher_id +"</td>"
++ "<td>" +status +"</td>"
++ "<td>" 
++ "<a class='prune' href = 'javascript:'>修改</a></br>"
++"</td>"
++ "</tr>" -->

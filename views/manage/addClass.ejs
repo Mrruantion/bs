@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../web/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../web/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="../web/Css/style.css" />
+    <script type="text/javascript" src="../web/Js/jquery.js"></script>
+    <!--<script type="text/javascript" src="../web/Js/jquery.sorted.js"></script>-->
+    <script type="text/javascript" src="../web/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="../web/Js/ckform.js"></script>
+    <script type="text/javascript" src="../web/Js/common.js"></script>
+    <style type="text/css">
+        body {
+            padding-bottom: 40px;
+        }
+        .sidebar-nav {
+            padding: 9px 0;
+        }
+
+        @media (max-width: 980px) {
+            /* Enable use of floated navbar text */
+            .navbar-text.pull-right {
+                float: none;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+
+
+    </style>
+</head>
+<form method="post">
+    <table class="table table-bordered table-hover definewidth m10">
+        <!-- <tr>
+            <td width="10%" class="tableleft">日历</td>
+            <td><input type="data" name="number" id="number"/></td>
+        </tr> -->
+        <tr>
+            <td class="tableleft">专业名</td>
+            <td><input type="text" name="profession"  id="profession"/></td>
+        </tr>  
+         <tr>
+            <td width="10%" class="tableleft">班级</td>
+            <td><input type="text" name="class" id="class"/></td>
+        </tr>
+         <tr>
+            <td width="10%" class="tableleft">课程名称</td>
+            <td><input type="text" name="class_name" id="class_name"/></td>
+        </tr>
+        <tr>
+            <td width="10%" class="tableleft">实验室</td>
+            <td><input type="text" name="roomno" id="roomno"/></td>
+        </tr>
+         <tr>
+            <td width="10%" class="tableleft">周期</td>
+            <td><input type="text" name="route" id="route"/></td>
+        </tr> 
+         <tr>
+            <td width="10%" class="tableleft">周/节次</td>
+            <td><input type="text" name="times" id="times"/></td>
+        </tr>
+        <tr>
+            <td width="10%" class="tableleft">上课时间</td>
+            <td><input type="text" name="time" id="time"/></td>
+        </tr>
+        <tr>
+            <td width="10%" class="tableleft">课程简介</td>
+            <td><textarea cols="40" rows="8" name="intru" id="intru"></textarea></td>
+        </tr>
+        <tr>
+            <td class="tableleft"></td>
+            <td>
+                <button type="submit" class="btn btn-primary" type="button">提交</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
+<script>
+    $(function () {       
+		// $('#backid').click(function(){
+		// 		window.location.href="index.html";
+		//  });
+        // var number = document.getElementById('number');
+        var profession = document.getElementById('profession');
+        var classs = document.getElementById('class');
+        var class_name = document.getElementById('class_name');
+        var roomno = document.getElementById('roomno');
+        var route = document.getElementById('route');
+        var times = document.getElementById('times');
+        var time = document.getElementById('time');
+        var intru = document.getElementById('intru')
+        // var teacher = document.getElementById('teacher');
+        //  var input    = document.getElementsByTagName("input")
+
+        $('.btn').click(function(){
+            // console.log(textarea.value)
+            // console.log('ddd')
+            // console.log(dd.value)
+            // console.log($('#number').value)
+            // console.log(input)
+            // console.log('3')
+            // if(number.value == ""){
+            //     alert('请输入日历')
+            //     return false
+            // }
+            if(profession.value == ""){
+                alert('请输入专业名称')
+                return false
+            }
+            if(classs.value == ""){
+                alert('请输入班级')
+                return false
+            }
+            if(class_name.value == ""){
+                alert('请输入课程名称')
+                return false
+            }
+            if(roomno.value == ""){
+                alert('请输入实验室名称')
+                return false
+            }
+            if(route.value == ""){
+                alert('请输入周期')
+                return false
+            }
+            if(times.value == ""){
+                alert('请输入节次')
+                return false
+            }
+            if(time.value == ""){
+                alert('请输入上课时间')
+                return false
+            }
+            if(intru.value == ""){
+                alert('请输入简介')
+                return false
+            }
+            
+            // if($('.number').value == ""){
+            //     alert('请填入日历');
+            //     return false;
+            // }
+            // if($('.profession').value == ""){
+            //     alert('请填入专业名称')
+            //     return false
+            // }
+        })
+        
+
+    });
+</script>

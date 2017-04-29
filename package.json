@@ -1,0 +1,20 @@
+{
+  "name": "xuanke",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "antd": "^2.9.3",
+    "body-parser": "~1.15.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.5.2",
+    "express": "~4.14.0",
+    "express-session": "*",
+    "morgan": "~1.7.0",
+    "mysql": "*",
+    "serve-favicon": "~2.3.0"
+  }
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title><%= docTitle %></title>
+    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- 可选的Bootstrap主题文件（一般不使用） -->
+    <!--<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>-->
+    
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="/stylesheets/reset.css" rel="stylesheet" />
+    <link href="/stylesheets/common.css" rel="stylesheet" />
+    <link href="/stylesheets/login_main.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1><%= bodyTitle %></h1>
+    </header>
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+                <form method="post" action=""  class="form-horizontal" name="login_body">
+                    <span class="heading">用户登录</span>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="id_input" placeholder="用户名">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <div class="form-group help">
+                        <input type="password" class="form-control" name="pwd_input"  placeholder="密　码">
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
+                    </div>
+                    <div class="form-group" id="selectId">
+                        <!--<div class="main-checkbox">
+                            <input type="radio" value="stu" name="stu_login" lable="学生" value="学生"/>-->
+                            <!--<label for="checkbox1"></label>-->
+                        <!--</div>-->
+                        <!--<span class="text">学生</span>-->
+                        <!--<div class="main-checkbox">
+                            <input type="radio" value="tea" name="teacher_login" lable="老师" value="老师"/>-->
+                            <!--<label for="checkbox2"></label>-->
+                        <!--</div>-->
+                        <!--<span class="text">老师</span>-->
+                        <!--<div class="main-checkbox">
+                            <input type="radio" value="man" name="reg" lable="教务主任" value="教务主任"/>-->
+                            <!--<label for="checkbox3"></label>-->
+                        <!--</div>-->
+                        <!--<span class="text">教务主任</span>-->
+                        <input type="radio" name="stu_login" id="type1" checked> 学生
+                        <input type="radio" name="stu_login" id="type2"> 老师
+                        <input type="radio" name="stu_login" id="type3"> 教务主任   
+                    </div>
+                    <div class="form-group bntt">
+                        <button type="submit" class="btn btn-default" id="submit">登录</button>
+                    <div>
+                </form>
+            </div>
+        </div>
+        <footer class="copy-right">
+            <p>Copyright &copy; 2017.ruanjunguang All rights reserved.</p>
+        </footer>
+    </div>
+    <!--<div class="login">
+        <div class="login_header"><img src="images/login_header.png" class="img-responsive" alt="" /></div>
+        <form method="post" action="" name="login_body" class="form-horizontal">
+        <div class="login_input">
+            <input type="text" name="id_input" class="text" placeholder="请输入账号" />
+            <input type="password" name="pwd_input" placeholder="请输入密码" />
+        </div>
+        <div>
+            <input type="checkBox" name="stu_login" label="学生" value="学生"/>
+            <input type="checkBox" name="teacher_login" label="老师" value="教师"/>
+            <input type="checkBox" name="reg" label="学生注册" value="学生注册"/>
+        </div>
+        <div class="login_stu_submit">
+            <input type="submit" value="登录通道" />
+        </div>
+        <div class="login_other_submit">
+            <input type="submit" class="teacher_login" name="teacher_login" value="教师登录通道" />
+            <input type="submit" class="reg" name="reg" value="学生注册通道" />
+        </div>
+        </form>
+    </div>-->
+    
+    <script type="text/javascript" src="/javascripts/loginChecking.js"></script>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+   
+</body>
+</html>
+
+
+<!--<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-4 column">
+		</div>
+		<div class="col-md-4 column">
+			<form role="form">
+				<div class="form-group">
+					 <label for="exampleInputEmail1">Email address</label><input type="email" class="form-control" id="exampleInputEmail1" />
+				</div>
+				<div class="form-group">
+					 <label for="exampleInputPassword1">Password</label><input type="password" class="form-control" id="exampleInputPassword1" />
+				</div>
+				<div class="checkbox">
+					 <label><input type="checkbox" />Check me out</label>
+				</div> <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+		<div class="col-md-4 column">
+		</div>
+	</div>
+</div>-->
