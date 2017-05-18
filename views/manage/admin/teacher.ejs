@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../web/Css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../web/Css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="../../web/Css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../web/bootstrap-paginator/src/bootstrap-paginator.js" />
+    <script type="text/javascript" src="../../web/Js/jquery.js"></script>
+    <script type="text/javascript" src="../../web/Js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../web/Js/ckform.js"></script>
+    <script type="text/javascript" src="../../web/Js/common.js"></script>
+    <script type="text/javascript" src="../../dist/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="../../JQ-paginator/jquery.pagination.js"></script>
+    <style type="text/css">
+        @media (max-width: 980px) {
+            
+        }
+        body{
+            width: 100%
+        }
+        .file {
+            position: relative;
+            display: inline-block;
+            background: #D0EEFF;
+            border: 1px solid #99D3F5;
+            border-radius: 4px;
+            padding: 4px 12px;
+            overflow: hidden;
+            color: #1E88C7;
+            text-decoration: none;
+            text-indent: 0;
+            line-height: 20px;}.file input {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            opacity: 0;}.file:hover {
+            background: #AADFFD;
+            border-color: #78C3F3;
+            color: #004974;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div >
+    <div id="list">
+        <div class="form-inline definewidth m20" >  
+        老师Id
+            <input type="text" name="search" id="search" class="abc input-default" placeholder="请输入老师账号">&nbsp;&nbsp;  
+            <button type="submit" id="btn" class="btn btn-primary">查询</button>&nbsp;&nbsp;
+            <!-- <button type="submit" id="add" class="btn btn-second" style="background: #e3e3e3">增加</button> -->
+            <a href="javascript:;" class="file btn btn-primary">导入名单<input type="file" name="" id="" onchange="importf(this)"></a>
+        </div>
+        <table class="table table-bordered table-hover definewidth m10">
+            <thead>
+                <tr>
+                    <th>老师Id</th>
+                    <th>密码</th>
+                    <th>老师姓名</th>
+                    <th>年龄</th>
+                    <th>性别</th>
+                    <th>手机号码</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="statusList"></tbody>
+        </table>
+        <div class="eg"> 
+            <div class="M-box3" id="M-box3"></div>
+        </div>
+        <div class="inline pull-right page">
+            <div id="pagecount"></div>
+        </div>
+    </div>
+    
+    <div id="edit">
+        <table class="table table-bordered table-hover definewidth m10" >
+            <tr>
+                <td class="tableleft">老师Id</td>
+                <td><input type="text" name="profession"  id="teacher_id"/></td>
+            </tr>  
+             <tr>
+                <td width="10%" class="tableleft">密码</td>
+                <td><input type="text" name="class" id="teacher_pwd"/></td>
+            </tr>
+             <tr>
+                <td width="10%" class="tableleft">老师姓名</td>
+                <td><input type="text" name="class_name" id="teacher_name"/></td>
+            </tr>
+            <tr>
+                <td width="10%" class="tableleft">年龄</td>
+                <td><input type="text" name="roomno" id="teacher_age"/></td>
+            </tr>
+             <tr>
+                <td width="10%" class="tableleft">性别</td>
+                <td><input type="text" name="route" id="teacher_sex"/></td>
+            </tr> 
+             <tr>
+                <td width="10%" class="tableleft">手机号码</td>
+                <td><input type="text" name="times" id="teacher_telephone"/></td>
+            </tr>
+            <tr>
+                <td class="tableleft"></td>
+                <td>
+                    <button type="submit" class="btn btn-primary" type="button" id="change">提交</button>
+                    &nbsp;&nbsp;<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="watch">
+        <table class="table table-bordered table-hover definewidth m10" >
+            <tr>
+                <td class="tableleft">老师Id</td>
+                <td><input type="text" name="profession"  id="teacher_id1"/></td>
+            </tr>  
+             <tr>
+                <td width="10%" class="tableleft">密码</td>
+                <td><input type="text" name="class" id="teacher_pwd1"/></td>
+            </tr>
+             <tr>
+                <td width="10%" class="tableleft">老师姓名</td>
+                <td><input type="text" name="class_name" id="teacher_name1"/></td>
+            </tr>
+            <tr>
+                <td width="10%" class="tableleft">年龄</td>
+                <td><input type="text" name="roomno" id="teacher_age1"/></td>
+            </tr>
+             <tr>
+                <td width="10%" class="tableleft">性别</td>
+                <td><input type="text" name="route" id="teacher_sex1"/></td>
+            </tr> 
+             <tr>
+                <td width="10%" class="tableleft">手机号码</td>
+                <td><input type="text" name="times" id="teacher_telephone1"/></td>
+            </tr>
+            <tr>
+                <td class="tableleft"></td>
+                <td>
+                    <button type="button" class="btn btn-success" name="backid" id="back">返回列表</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+
+
+var curPage = 1; //当前页码 
+var total,pageSize,totalPage; //总记录数，每页显示数，总页数 
+function getData(page){  
+    $.ajax({ 
+        type: 'get', 
+        url: "/admin/teacher", 
+        data: {pageNum:page-1}, 
+        dataType:'json', 
+        success:function(data){ 
+            $("#statusList").empty();//清空数据区 
+            total = data.total; //总记录数 
+            pageSize = data.pageSize; //每页显示条数 
+            curPage = page; //当前页 
+            totalPage = data.totalPage; //总页数 
+            var li = ""; 
+            // var list = json.list; 
+            for(var i=0;i<data.data.length;i++){
+                // var it = ['未通过','审核中','已通过']
+                // if(data[i].state)
+                // var status = it[data.data[i].status]
+                var trContent = " <tr>" 
+                    + "<td>" + data.data[i].teacher_id +"</td>"
+                    + "<td>" + data.data[i].teacher_pwd +"</td>"
+                    + "<td>" + data.data[i].teacher_name +"</td>"
+                    + "<td>" + data.data[i].teacher_age +"</td>"
+                    + "<td>" + data.data[i].teacher_sex +"</td>"
+                    + "<td>" + data.data[i].teacher_telephone +"</td>"
+                    + "<td>" + dateToString(date(data.data[i].teacher_time)) +"</td>"
+                    + "<td>" 
+                    + "<a class='prune' href = 'javascript:edit("+JSON.stringify(data.data[i])+")'>修改</a>&nbsp<a class='prune' href = 'javascript:dele("+JSON.stringify(data.data[i])+")'>删除</a>&nbsp<a class='prune' href = 'javascript:watch("+JSON.stringify(data.data[i])+")'>查看</a></br>"
+                    +"</td>"
+                    + "</tr>"
+                $("#statusList").append(trContent);
+            } 
+        }, 
+        complete:function(){ //生成分页条 
+            getPageBar();
+            fun(); 
+        }, 
+        error:function(){ 
+            alert("数据加载失败"); 
+        } 
+    }); 
+} 
+//获取分页条 
+function getPageBar(){ 
+    //页码大于最大页数 
+    if(curPage>totalPage) curPage=totalPage; 
+    //页码小于1 
+    console.log(totalPage)
+    if(curPage<1) curPage=1; 
+    pageStr = "<span>共"+total+"条</span><span>"+curPage 
+    +"/"+totalPage+"</span>"; 
+     
+    //如果是第一页 
+    if(curPage==1){ 
+        pageStr += "<span>首页</span><span>上一页</span>"; 
+    }else{ 
+        pageStr += "<span><a href='javascript:void(0)' rel='1'>首页</a></span><span><a href='javascript:void(0)' rel='"+(curPage-1)+"'>上一页</a></span>"; 
+    } 
+    //如果是最后页 
+    if(curPage>=totalPage){ 
+        pageStr += "<span>下一页</span><span>尾页</span>"; 
+    }else{ 
+        pageStr += "<span><a href='javascript:void(0)' rel='"+(parseInt(curPage)+1)+"'> 下一页</a></span><span><a href='javascript:void(0)' rel='"+totalPage+"'>尾页</a></span>"; 
+    } 
+    $("#pagecount").html(pageStr); 
+}
+    
+$(function(){ 
+    getData(1);
+    $('#edit').hide(); //隐藏修改列表
+    $('#watch').hide(); //隐藏查看列表
+});
+function fun(){
+    $("#pagecount span a").on('click',function(){ 
+        var rel = $(this).attr("rel"); 
+        // alert(rel)
+        if(rel&&sear){  //查询
+            search(rel,sear)
+        }else if(rel){
+            getData(rel); 
+        }
+    });  
+}
+
+
+var sear = null;
+// var page = 1
+$('#btn').click(function(){
+    sear = $('#search').val();
+    if(sear){
+        console.log(11)
+        search(1,sear)
+    }else {
+        getData(1)
+    }
+    // console.log(search)
+})
+
+function search(page,data){
+     $.ajax({ 
+        type: 'get', 
+        url: "/admin/teacher/search", 
+        data: {pageNum:page-1,search:data}, 
+        dataType:'json', 
+        success:function(data){ 
+            $("#statusList").empty();//清空数据区 
+            total = data.total; //总记录数 
+            pageSize = data.pageSize; //每页显示条数 
+            curPage = page; //当前页 
+            totalPage = data.totalPage; //总页数 
+            var li = ""; 
+            // var list = json.list; 
+            for(var i=0;i<data.data.length;i++){
+                var trContent = " <tr>" 
+                    + "<td>" + data.data[i].teacher_id +"</td>"
+                    + "<td>" + data.data[i].teacher_pwd +"</td>"
+                    + "<td>" + data.data[i].teacher_name +"</td>"
+                    + "<td>" + data.data[i].teacher_age +"</td>"
+                    + "<td>" + data.data[i].teacher_sex +"</td>"
+                    + "<td>" + data.data[i].teacher_telephone +"</td>"
+                    + "<td>" + dateToString(date(data.data[i].teacher_time)) +"</td>"
+                    + "<td>" 
+                    + "<a class='prune' href = 'javascript:edit("+JSON.stringify(data.data[i])+")'>修改</a>&nbsp<a class='prune' href = 'javascript:dele("+JSON.stringify(data.data[i])+")'>删除</a>&nbsp<a class='prune' href = 'javascript:watch("+JSON.stringify(data.data[i])+")'>查看</a></br>"
+                    +"</td>"
+                    + "</tr>"
+                $("#statusList").append(trContent);
+            } 
+        }, 
+        complete:function(){ //生成分页条 
+            getPageBar();
+            fun(); 
+        }, 
+        error:function(){ 
+            alert("数据加载失败"); 
+        } 
+    }); 
+}
+
+$('#backid').click(function(){
+    $('#list').show();
+    $('#edit').hide();
+    $('#watch').hide();
+    sear = $('#search').val();
+    if(sear){
+        console.log(11)
+        search(1,sear)
+    }else {
+        getData(1)
+    }
+})
+
+//修改
+var id = 0
+function edit(data){
+    id = data.teacher_id
+    $('#list').hide();
+    $('#edit').show();
+    $('#teacher_id').val(data.teacher_id).attr("disabled","true");
+    $('#teacher_pwd').val(data.teacher_pwd).removeAttr("disabled");
+    $('#teacher_name').val(data.teacher_name).removeAttr("disabled");
+    $('#teacher_age').val(data.teacher_age).removeAttr("disabled");
+    $('#teacher_sex').val(data.teacher_sex).removeAttr("disabled");
+    $('#teacher_grade').val(data.teacher_grade).removeAttr("disabled");
+    $('#teacher_telephone').val(data.teacher_telephone).removeAttr("disabled");
+}
+
+$('#change').click(function(){
+    console.log(11)
+    var option = {
+        teacher_pwd: $('#teacher_pwd').val(),
+        teacher_name : $('#teacher_name').val(),
+        teacher_age : $('#teacher_age').val(),
+        teacher_sex : $('#teacher_sex').val(),
+        teacher_grade : $('#teacher_grade').val(),
+        teacher_telephone : $('#teacher_telephone').val(),
+        teacher_id: id
+    }
+    $.ajax({
+        type:'post',
+        url:'/admin/teacher/edit',
+        data:option,
+        dataType:'json',
+        success:function(data){
+            getData(1)
+            $('#list').show();
+            $('#edit').hide();
+        }
+    })
+    console.log(option)
+})
+
+//删除
+function dele(data){
+    console.log(data.id)
+    var truthBeTold = window.confirm("是否删除本条记录");
+    if(truthBeTold){
+        $.ajax({ 
+            type: 'post', 
+            url: "/admin/teacherdent/delete", 
+            data: {id:data.teacher_id}, 
+            dataType:'json', 
+            success:function(data){ 
+                // console.log(data)
+                getData(1)
+            }
+        }); 
+    }else {
+        return false;
+    }
+    
+}
+//查看
+function watch(data){
+    console.log(data,'data')
+    $('#list').hide();
+    $('#edit').hide();
+    $('#watch').show();
+    $('#teacher_id1').val(data.teacher_id).attr("disabled","true");
+    $('#teacher_pwd1').val(data.teacher_pwd).attr("disabled","true");
+    $('#teacher_name1').val(data.teacher_name).attr("disabled","true");
+    $('#teacher_age1').val(data.teacher_age).attr("disabled","true");
+    $('#teacher_sex1').val(data.teacher_sex).attr("disabled","true");
+    $('#teacher_grade1').val(data.teacher_grade).attr("disabled","true");
+    $('#teacher_telephone1').val(data.teacher_telephone).attr("disabled","true");
+}
+$('#back').click(function(){
+    $('#list').show();
+    $('#edit').hide();
+    $('#watch').hide();
+    sear = $('#search').val();
+    if(sear){
+        console.log(11)
+        search(1,sear)
+    }else {
+        getData(1)
+    }
+})
+//日期格式
+function date(str) {
+    var date = new Date();
+    if (!str)
+        return date;
+    var t = str.split(/[T\s]/);
+    if (t.length < 2)
+        t = (str + ' 00:00:00').split(/[T\s]/);
+    var str_before = t[0]; //获取年月日
+    var str_after = t[1]; //获取时分秒
+    var years = str_before.split('-')[0]; //分别截取得到年月日
+    var months = str_before.split('-')[1] - 1;
+    var days = str_before.split('-')[2];
+    var hours = str_after.split(':')[0] || 0;
+    var mins = str_after.split(':')[1] || 0;
+    var seces = str_after.split(':')[2].replace("Z", "");
+    var secs = seces.split('.')[0] || 0;
+    var smsecs = seces.split('.')[1] || 0;
+    if (str.indexOf("T") == -1) {
+        date.setFullYear(years, months, days);
+        date.setHours(hours, mins, secs, smsecs);
+    } else {
+        date.setUTCFullYear(years, months, days);
+        date.setUTCHours(hours, mins, secs, smsecs);
+    }
+    return date;
+}
+//日期格式
+function dateToString(d) {
+    var j = {};
+    j.m = d.getMonth() + 1;
+    j.d = d.getDate();
+    j.h = d.getHours();
+    j.mi = d.getMinutes();
+    j.s = d.getSeconds();
+    for (items in j) {
+        if (j[items] < 10)
+            j[items] = "0" + j[items];
+    }
+    return d.getFullYear() + "-" + j.m + "-" + j.d + " " + j.h + ":" + j.mi + ":" + j.s;
+}
+
+
+var wb;//读取完成的数据
+var rABS = false; //是否将文件读取为二进制字符串
+
+function importf(obj) {//导入
+    if(!obj.files) {
+        return;
+    }
+    var f = obj.files[0];
+    var reader = new FileReader();
+    var ddata = null
+    reader.onload = function(e) {
+        var data = e.target.result;
+        if(rABS) {
+            wb = XLSX.read(btoa(fixdata(data)), {//手动转化
+                type: 'base64'
+            });
+        } else {
+            wb = XLSX.read(data, {
+                type: 'binary'
+            });
+        }
+        //wb.SheetNames[0]是获取Sheets中第一个Sheet的名字
+        //wb.Sheets[Sheet名]获取第一个Sheet的数据
+        ddata =  XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]]) 
+        addteacherdents(ddata);
+        
+    };
+    // console.log(ddata,'ddd')
+    if(rABS) {
+        reader.readAsArrayBuffer(f);
+    } else {
+        reader.readAsBinaryString(f);
+    }
+}
+
+//文件流转BinaryString
+function fixdata(data) { 
+    var o = "",
+        l = 0,
+        w = 10240;
+    for(; l < data.byteLength / w; ++l) o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w, l * w + w)));
+    o += String.fromCharCode.apply(null, new Uint8Array(data.slice(l * w)));
+    return o;
+}
+function addteacherdents(data){
+    console.log(data,'data')
+    $.ajax({ 
+        type: 'POST', 
+        url: "/sssss", 
+        data: {data:JSON.stringify(data)}, 
+        dataType:'json', 
+        success:function(data){ 
+            // console.log(1)
+            document.write('导入成功')
+        },
+        error:function(){ 
+            alert("数据加载失败"); 
+        } 
+    }); 
+}
+</script>
+
